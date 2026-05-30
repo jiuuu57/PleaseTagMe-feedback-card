@@ -250,35 +250,105 @@
       font-size: 13px;
     }
 
+    /* 下載用：單張合成小卡 */
     #downloadCard {
       position: fixed;
       left: -9999px;
       top: 0;
-      width: 720px;
-      height: 520px;
-      display: flex;
-      gap: 24px;
+      width: 420px;
+      height: 620px;
       padding: 24px;
       background:
         radial-gradient(circle at center, rgba(120, 60, 45, 0.28), transparent 38%),
         linear-gradient(180deg, #1a1111 0%, #070707 100%);
     }
 
-    .download-face {
-      width: 324px;
-      height: 472px;
-      position: relative;
-      border-radius: 22px;
-      overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, .45);
-    }
-
-    .download-face.card-back {
-      transform: none;
-    }
-
-    .download-face .back-content {
+    .download-inner {
+      width: 100%;
       height: 100%;
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, .25), transparent 40%),
+        #e7d9c4;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .45);
+      padding: 26px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .download-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #5a2b2b;
+      margin-bottom: 18px;
+    }
+
+    #downloadImage {
+      width: 62%;
+      max-height: 210px;
+      object-fit: contain;
+      margin-bottom: 18px;
+    }
+
+    .download-tags {
+      max-width: 100%;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: #8f2f2f;
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .download-date {
+      align-self: flex-start;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: rgba(80, 40, 40, .45);
+      margin-bottom: 16px;
+    }
+
+    .download-feedback {
+      width: 100%;
+      color: #2b1212;
+      font-size: 22px;
+      line-height: 1.8;
+      font-weight: 900;
+      letter-spacing: 1px;
+      white-space: pre-line;
+      text-align: left;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(80, 40, 40, .18);
+    }
+
+    .download-note {
+      margin-top: 16px;
+      align-self: flex-start;
+      font-size: 12px;
+      line-height: 1.7;
+      color: rgba(43, 18, 18, .55);
+      font-weight: 700;
+    }
+
+    .download-footer {
+      margin-top: auto;
+      align-self: flex-end;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: rgba(143, 47, 47, .55);
     }
   </style>
 </head>
@@ -314,24 +384,25 @@
 
   <div class="hint">點擊卡片翻面｜長按下載小卡</div>
 
+  <!-- 這張不顯示在畫面上，只用來下載成單張圖片 -->
   <div id="downloadCard">
-    <div class="download-face card-front" id="downloadFront">
-      <img id="downloadImage" src="card_front.png" alt="下載角色圖">
-      <div id="downloadFrontTags" class="card-tags">讀取中...</div>
-    </div>
+    <div class="download-inner">
+      <div class="download-title">PLEASE TAG ME</div>
 
-    <div class="download-face card-back">
-      <div class="back-content">
-        <div id="downloadDate" class="serial-number"></div>
-        <div class="back-small-title">YOUR TAGS</div>
-        <div id="downloadBackTags" class="back-tags">讀取中...</div>
-        <div id="downloadFeedback" class="feedback-text">讀取中...</div>
-        <div class="back-note">
-          這不是定義你的標籤，<br>
-          而是一段重新看見自己的回聲。
-        </div>
-        <div class="back-footer">Please Tag Me</div>
+      <img id="downloadImage" src="card_front.png" alt="下載角色圖">
+
+      <div id="downloadFrontTags" class="download-tags">讀取中...</div>
+
+      <div id="downloadDate" class="download-date"></div>
+
+      <div id="downloadFeedback" class="download-feedback">讀取中...</div>
+
+      <div class="download-note">
+        這不是定義你的標籤，<br>
+        而是一段重新看見自己的回聲。
       </div>
+
+      <div class="download-footer">Please Tag Me</div>
     </div>
   </div>
 
@@ -349,10 +420,8 @@
     const tagCardFront = document.getElementById("tagCardFront");
 
     const downloadCard = document.getElementById("downloadCard");
-    const downloadFront = document.getElementById("downloadFront");
     const downloadImage = document.getElementById("downloadImage");
     const downloadFrontTags = document.getElementById("downloadFrontTags");
-    const downloadBackTags = document.getElementById("downloadBackTags");
     const downloadFeedback = document.getElementById("downloadFeedback");
     const downloadDate = document.getElementById("downloadDate");
 
@@ -401,7 +470,6 @@
       cardTags.innerText = tagText;
       backTags.innerText = tagText;
       downloadFrontTags.innerText = tagText;
-      downloadBackTags.innerText = tagText;
 
       const coverImage = getCoverImageByFirstTag(selectedTags);
       characterImage.src = coverImage;
@@ -528,7 +596,6 @@
       feedbackText.innerText = message;
 
       downloadFrontTags.innerText = "#未選擇標籤";
-      downloadBackTags.innerText = "#未選擇標籤";
       downloadFeedback.innerText = message;
 
       characterImage.src = "card_front.png";
@@ -551,7 +618,6 @@
       const baseColor = palette[Math.floor(Math.random() * palette.length)];
 
       tagCardFront.style.backgroundColor = baseColor;
-      downloadFront.style.backgroundColor = baseColor;
     }
 
     function setupLongPressDownload() {
@@ -590,12 +656,11 @@
     }
 
     async function downloadCardImage() {
-      await waitForImage(characterImage);
       await waitForImage(downloadImage);
 
       const canvas = await html2canvas(downloadCard, {
         backgroundColor: null,
-        scale: 2,
+        scale: 3,
         useCORS: true
       });
 
