@@ -10,6 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <style>
     * { box-sizing: border-box; }
 
@@ -255,20 +257,17 @@
     <div id="resultCard" class="card">
 
       <div id="tagCardFront" class="card-face card-front">
-        <img src="card_front.png" alt="角色圖片">
-        <div id="cardTags" class="card-tags"></div>
+        <img id="characterImage" src="card_front.png" alt="角色圖片">
+        <div id="cardTags" class="card-tags">讀取中...</div>
       </div>
 
       <div id="tagCardBack" class="card-face card-back">
         <div class="back-content">
-
           <div id="dateText" class="serial-number"></div>
 
-          <div class="back-small-title">
-            YOUR TAGS
-          </div>
+          <div class="back-small-title">YOUR TAGS</div>
 
-          <div id="backTags" class="back-tags"></div>
+          <div id="backTags" class="back-tags">讀取中...</div>
 
           <div id="feedbackText" class="feedback-text">
             讀取中...
@@ -279,10 +278,7 @@
             而是一段重新看見自己的回聲。
           </div>
 
-          <div class="back-footer">
-            Please Tag Me
-          </div>
-
+          <div class="back-footer">Please Tag Me</div>
         </div>
       </div>
 
@@ -294,73 +290,83 @@
   <button onclick="restart()">重新開始</button>
 
   <script>
-    const selected =
-      JSON.parse(localStorage.getItem("selectedTags") || "[]");
+    const SUPABASE_URL = "https://wldvtasakcqdqtscbrnv.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_mtCH5g7GbaYbzsufbrgY1Q_uj_3JIDC";
+
+    const supabaseClient = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_ANON_KEY
+    );
 
     const cardTags = document.getElementById("cardTags");
     const backTags = document.getElementById("backTags");
     const feedbackText = document.getElementById("feedbackText");
     const dateText = document.getElementById("dateText");
-
-    const tagText =
-      selected.length > 0
-        ? selected.map(tag => `#${tag}`).join(" ")
-        : "#未選擇標籤";
-
-    cardTags.innerText = tagText;
-    backTags.innerText = tagText;
+    const characterImage = document.getElementById("characterImage");
 
     setDate();
-    loadFeedback();
     generateFrontStyle();
+    loadSavedCharacter();
 
     function setDate() {
       const now = new Date();
-
       const year = now.getFullYear();
-      const month =
-        String(now.getMonth() + 1).padStart(2, "0");
-      const day =
-        String(now.getDate()).padStart(2, "0");
+      const month = String(now.getMonth() + 1).padStart(2, "0");
+      const day = String(now.getDate()).padStart(2, "0");
 
-      dateText.innerText =
-        `${year}.${month}.${day}`;
+      dateText.innerText = `${year}.${month}.${day}`;
     }
 
-    async function loadFeedback() {
-      try {
-        const response = await fetch("json/feedback.json");
+    async function loadSavedCharacter() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
 
-        if (!response.ok) {
-          throw new Error("feedback.json 讀取失敗");
-        }
-
-        const feedbackData = await response.json();
-
-        const matched = feedbackData.find(item => {
-          if (item.tags.length !== selected.length) {
-            return false;
-          }
-
-          return item.tags.every(tag =>
-            selected.includes(tag)
-          );
-        });
-
-        const finalText = matched
-          ? matched.text.replaceAll("，", "\n")
-          : "你不是任何單一標籤\n你擁有比標籤更多的樣子";
-
-        feedbackText.innerText = finalText;
-
-        localStorage.setItem("finalFeedback", finalText);
-
-      } catch (error) {
-        console.error(error);
-
-        feedbackText.innerText =
-          "沒有找到回饋文字\n請確認 feedback.json 路徑是否正確。";
+      if (!id) {
+        showFallback("網址沒有帶 id\n請使用 card.html?id=資料id");
+        return;
       }
+
+      const { data, error } = await supabaseClient
+        .from("saved_characters")
+        .select("selected_tags, ai_feedback, character_png_url")
+        .eq("id", id)
+        .single();
+
+      if (error) {
+        console.error("Supabase 讀取失敗：", error);
+        showFallback("讀取 Supabase 失敗\n請確認 id 或 RLS 權限");
+        return;
+      }
+
+      const selectedTags = Array.isArray(data.selected_tags)
+        ? data.selected_tags
+        : [];
+
+      const tagText = selectedTags.length > 0
+        ? selectedTags.map(tag => `#${tag}`).join(" ")
+        : "#未選擇標籤";
+
+      cardTags.innerText = tagText;
+      backTags.innerText = tagText;
+
+      if (data.ai_feedback) {
+        feedbackText.innerText = data.ai_feedback.replaceAll("，", "\n");
+      } else {
+        feedbackText.innerText = "你不是任何單一標籤\n你擁有比標籤更多的樣子";
+      }
+
+      if (data.character_png_url) {
+        characterImage.src = data.character_png_url;
+      }
+
+      localStorage.setItem("selectedTags", JSON.stringify(selectedTags));
+      localStorage.setItem("finalFeedback", feedbackText.innerText);
+    }
+
+    function showFallback(message) {
+      cardTags.innerText = "#未選擇標籤";
+      backTags.innerText = "#未選擇標籤";
+      feedbackText.innerText = message;
     }
 
     function flipCard() {
@@ -378,8 +384,7 @@
     }
 
     function generateFrontStyle() {
-      const front =
-        document.getElementById("tagCardFront");
+      const front = document.getElementById("tagCardFront");
 
       const palette = [
         "#EEEFEB",
@@ -390,9 +395,7 @@
       ];
 
       const baseColor =
-        palette[
-          Math.floor(Math.random() * palette.length)
-        ];
+        palette[Math.floor(Math.random() * palette.length)];
 
       front.style.backgroundColor = baseColor;
     }
