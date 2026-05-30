@@ -99,8 +99,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      transform: rotateY(0deg);
-      -webkit-transform: rotateY(0deg);
+
+      transform: rotateY(0deg) translateZ(0.5px);
+      -webkit-transform: rotateY(0deg) translateZ(0.5px);
     }
 
     .card-back {
@@ -108,18 +109,9 @@
       background: #e7d9c4;
       color: #3a1f1f;
       padding: 18px;
-      transform: rotateY(180deg);
-      -webkit-transform: rotateY(180deg);
-    }
 
-    .card.flipped .card-front {
-      visibility: hidden;
-      opacity: 0;
-    }
-
-    .card:not(.flipped) .card-back {
-      visibility: hidden;
-      opacity: 0;
+      transform: rotateY(180deg) translateZ(0.5px);
+      -webkit-transform: rotateY(180deg) translateZ(0.5px);
     }
 
     .card-front::before,
@@ -127,12 +119,6 @@
     .card-tags {
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
-    }
-
-    .card.flipped .card-front::before,
-    .card.flipped .card-front img,
-    .card.flipped .card-tags {
-      opacity: 0;
     }
 
     .card-front::before {
