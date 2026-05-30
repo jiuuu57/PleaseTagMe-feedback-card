@@ -28,24 +28,36 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
       background:
-        radial-gradient(circle at center, rgba(120, 60, 45, 0.28), transparent 38%),
-        linear-gradient(180deg, #1a1111 0%, #070707 100%);
+        radial-gradient(circle at center,
+          rgba(120, 60, 45, 0.28),
+          transparent 38%),
+        linear-gradient(180deg,
+          #1a1111 0%,
+          #070707 100%);
+
       color: #f4e4c1;
       font-family: "Noto Serif TC", serif;
     }
 
     h1 {
-      margin: 0 0 22px;
-      font-size: 34px;
-      letter-spacing: 8px;
+      margin: 0 0 18px;
+      font-size: 28px;
+      letter-spacing: 5px;
       font-weight: 900;
-      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      font-family: "Cormorant Garamond",
+        "Noto Serif TC",
+        serif;
     }
 
     .card-scene {
-      width: 380px;
-      height: 580px;
+      width: 82vw;
+      height: 68vh;
+
+      max-width: 340px;
+      max-height: 520px;
+
       perspective: 1200px;
       cursor: pointer;
     }
@@ -68,14 +80,17 @@
       height: 100%;
       backface-visibility: hidden;
       overflow: hidden;
-      border-radius: 26px;
-      box-shadow: 0 24px 70px rgba(0, 0, 0, .45);
+      border-radius: 22px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .45);
     }
 
     .card-front {
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, .22), transparent 45%),
+        linear-gradient(180deg,
+          rgba(255, 255, 255, .22),
+          transparent 45%),
         #d8c9b2;
+
       display: flex;
       justify-content: center;
       align-items: center;
@@ -83,34 +98,45 @@
 
     .card-front::before {
       content: "PLEASE TAG ME";
+
       position: absolute;
-      top: 28px;
+      top: 22px;
       left: 50%;
+
       transform: translateX(-50%);
-      font-size: 15px;
+
+      font-size: 13px;
       font-weight: bold;
-      letter-spacing: 4px;
+      letter-spacing: 3px;
+
       color: #5a2b2b;
+
       font-family: "Cormorant Garamond", serif;
     }
 
     .card-front img {
-      width: 72%;
+      width: 70%;
       transform: translateY(-10px);
     }
 
     .card-tags {
       position: absolute;
-      bottom: 34px;
+      bottom: 24px;
       left: 50%;
+
       transform: translateX(-50%);
-      max-width: 82%;
-      font-size: 19px;
+
+      max-width: 84%;
+
+      font-size: 15px;
       font-weight: bold;
-      background: rgba(255, 255, 255, .9);
+
+      background: rgba(255, 255, 255, .92);
       color: #5a3b4a;
-      padding: 10px 20px;
+
+      padding: 8px 16px;
       border-radius: 999px;
+
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -120,117 +146,160 @@
       transform: rotateY(180deg);
       background: #e7d9c4;
       color: #3a1f1f;
-      padding: 30px;
+      padding: 18px;
     }
 
     .back-content {
       width: 100%;
       height: 100%;
-      border-radius: 22px;
+
+      border-radius: 18px;
+
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, .65), rgba(255, 255, 255, .25)),
+        linear-gradient(180deg,
+          rgba(255, 255, 255, .65),
+          rgba(255, 255, 255, .25)),
         #f8f1e6;
-      padding: 30px 30px 28px;
+
+      padding: 22px 22px 20px;
+
       display: flex;
       flex-direction: column;
+
       text-align: left;
       position: relative;
     }
 
     .back-content::after {
       content: "LABEL";
+
       position: absolute;
-      right: -18px;
-      top: 155px;
+      right: -14px;
+      top: 120px;
+
       transform: rotate(90deg);
-      font-size: 54px;
+
+      font-size: 42px;
       font-weight: 700;
-      letter-spacing: 6px;
+      letter-spacing: 5px;
+
       color: rgba(143, 47, 47, .08);
+
       font-family: "Cormorant Garamond", serif;
+
       pointer-events: none;
     }
 
     .serial-number {
-      font-size: 12px;
-      letter-spacing: 3px;
+      font-size: 11px;
+      letter-spacing: 2px;
       color: rgba(80, 40, 40, .45);
-      margin-bottom: 24px;
+
+      margin-bottom: 18px;
+
       font-family: "Cormorant Garamond", serif;
     }
 
     .back-small-title {
-      font-size: 14px;
-      letter-spacing: 5px;
+      font-size: 12px;
+      letter-spacing: 4px;
       font-weight: 700;
+
       color: #8f2f2f;
+
       font-family: "Cormorant Garamond", serif;
-      margin-bottom: 16px;
+
+      margin-bottom: 12px;
     }
 
     .back-tags {
       align-self: flex-start;
+
       max-width: 100%;
-      padding: 9px 16px;
+
+      padding: 8px 14px;
+
       border-radius: 999px;
+
       background: #8f2f2f;
       color: #fff;
-      font-size: 16px;
+
+      font-size: 14px;
       font-weight: 700;
       line-height: 1.5;
-      margin-bottom: 38px;
+
+      margin-bottom: 24px;
     }
 
     .feedback-text {
       width: 100%;
+
       color: #2b1212;
-      font-size: 24px;
-      line-height: 2;
+
+      font-size: 20px;
+      line-height: 1.8;
       font-weight: 900;
+
       letter-spacing: 1px;
+
       text-align: left;
       white-space: pre-line;
+
       position: relative;
-      padding-bottom: 30px;
+      padding-bottom: 20px;
+
       z-index: 2;
     }
 
     .feedback-text::after {
       content: "";
+
       position: absolute;
       left: 0;
       bottom: 0;
+
       width: 100%;
       height: 1px;
+
       background: rgba(80, 40, 40, .18);
     }
 
     .back-note {
-      margin-top: 18px;
-      font-size: 13px;
-      line-height: 1.8;
-      letter-spacing: 1px;
+      margin-top: 14px;
+
+      font-size: 11px;
+      line-height: 1.7;
+      letter-spacing: .5px;
+
       color: rgba(43, 18, 18, .55);
+
       font-weight: 700;
       z-index: 2;
     }
 
     .back-footer {
       margin-top: auto;
+
       align-self: flex-end;
-      font-size: 18px;
+
+      font-size: 15px;
       font-weight: 700;
-      letter-spacing: 4px;
+
+      letter-spacing: 3px;
+
       color: rgba(143, 47, 47, .55);
+
       font-family: "Cormorant Garamond", serif;
       font-style: italic;
+
       z-index: 2;
     }
 
     .hint {
-      margin-top: 18px;
+      margin-top: 14px;
+
       color: #ddd;
-      font-size: 15px;
+      font-size: 13px;
     }
   </style>
 </head>
