@@ -8,12 +8,16 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap"
+    rel="stylesheet">
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -70,7 +74,7 @@
 
     .card-front {
       background:
-        linear-gradient(180deg, rgba(255,255,255,.22), transparent 45%),
+        linear-gradient(180deg, rgba(255, 255, 255, .22), transparent 45%),
         #d8c9b2;
       display: flex;
       justify-content: center;
@@ -124,7 +128,7 @@
       height: 100%;
       border-radius: 22px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,.25)),
+        linear-gradient(180deg, rgba(255, 255, 255, .65), rgba(255, 255, 255, .25)),
         #f8f1e6;
       padding: 30px 30px 28px;
       display: flex;
@@ -239,7 +243,7 @@
       cursor: pointer;
       background: #ffcc66;
       color: #111;
-      box-shadow: 0 8px 24px rgba(0,0,0,.35);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
       font-family: "Noto Serif TC", serif;
     }
 
@@ -291,7 +295,7 @@
 
   <script>
     const SUPABASE_URL = "https://wldvtasakcqdqtscbrnv.supabase.co";
-    const SUPABASE_KEY = "sb_publishable_mtCH5g7GbaYbzsufbrgY1Q_uj_3JIDC";
+    const SUPABASE_ANON_KEY = "sb_publishable_mtCH5g7GbaYbzsufbrgY1Q_uj_3JIDC";
 
     const supabaseClient = supabase.createClient(
       SUPABASE_URL,
