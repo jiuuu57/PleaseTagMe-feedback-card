@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Please Tag Me｜回饋小卡片</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background:
+        radial-gradient(circle at center, rgba(120, 60, 45, 0.28), transparent 38%),
+        linear-gradient(180deg, #1a1111 0%, #070707 100%);
+      color: #f4e4c1;
+      font-family: "Noto Serif TC", serif;
+    }
+
+    h1 {
+      margin: 0 0 22px;
+      font-size: 34px;
+      letter-spacing: 8px;
+      font-weight: 900;
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+    }
+
+    .card-scene {
+      width: 380px;
+      height: 580px;
+      perspective: 1200px;
+      cursor: pointer;
+    }
+
+    .card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform .9s ease;
+    }
+
+    .card.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      overflow: hidden;
+      border-radius: 26px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .45);
+    }
+
+    .card-front {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.22), transparent 45%),
+        #d8c9b2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-front::before {
+      content: "PLEASE TAG ME";
+      position: absolute;
+      top: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      color: #5a2b2b;
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    .card-front img {
+      width: 72%;
+      transform: translateY(-10px);
+    }
+
+    .card-tags {
+      position: absolute;
+      bottom: 34px;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 82%;
+      font-size: 19px;
+      font-weight: bold;
+      background: rgba(255, 255, 255, .9);
+      color: #5a3b4a;
+      padding: 10px 20px;
+      border-radius: 999px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      background: #e7d9c4;
+      color: #3a1f1f;
+      padding: 30px;
+    }
+
+    .back-content {
+      width: 100%;
+      height: 100%;
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,.25)),
+        #f8f1e6;
+      padding: 30px 30px 28px;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      position: relative;
+    }
+
+    .back-content::after {
+      content: "LABEL";
+      position: absolute;
+      right: -18px;
+      top: 155px;
+      transform: rotate(90deg);
+      font-size: 54px;
+      font-weight: 700;
+      letter-spacing: 6px;
+      color: rgba(143, 47, 47, .08);
+      font-family: "Cormorant Garamond", serif;
+      pointer-events: none;
+    }
+
+    .serial-number {
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: rgba(80, 40, 40, .45);
+      margin-bottom: 24px;
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    .back-small-title {
+      font-size: 14px;
+      letter-spacing: 5px;
+      font-weight: 700;
+      color: #8f2f2f;
+      font-family: "Cormorant Garamond", serif;
+      margin-bottom: 16px;
+    }
+
+    .back-tags {
+      align-self: flex-start;
+      max-width: 100%;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: #8f2f2f;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 38px;
+    }
+
+    .feedback-text {
+      width: 100%;
+      color: #2b1212;
+      font-size: 24px;
+      line-height: 2;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-align: left;
+      white-space: pre-line;
+      position: relative;
+      padding-bottom: 30px;
+      z-index: 2;
+    }
+
+    .feedback-text::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background: rgba(80, 40, 40, .18);
+    }
+
+    .back-note {
+      margin-top: 18px;
+      font-size: 13px;
+      line-height: 1.8;
+      letter-spacing: 1px;
+      color: rgba(43, 18, 18, .55);
+      font-weight: 700;
+      z-index: 2;
+    }
+
+    .back-footer {
+      margin-top: auto;
+      align-self: flex-end;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: rgba(143, 47, 47, .55);
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      z-index: 2;
+    }
+
+    .hint {
+      margin-top: 18px;
+      color: #ddd;
+      font-size: 15px;
+    }
+
+    button {
+      margin-top: 18px;
+      padding: 13px 40px;
+      border: none;
+      border-radius: 999px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #ffcc66;
+      color: #111;
+      box-shadow: 0 8px 24px rgba(0,0,0,.35);
+      font-family: "Noto Serif TC", serif;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>FEEDBACK CARD</h1>
+
+  <div class="card-scene" onclick="flipCard()">
+    <div id="resultCard" class="card">
+
+      <div id="tagCardFront" class="card-face card-front">
+        <img src="card_front.png" alt="角色圖片">
+        <div id="cardTags" class="card-tags"></div>
+      </div>
+
+      <div id="tagCardBack" class="card-face card-back">
+        <div class="back-content">
+
+          <div id="dateText" class="serial-number"></div>
+
+          <div class="back-small-title">
+            YOUR TAGS
+          </div>
+
+          <div id="backTags" class="back-tags"></div>
+
+          <div id="feedbackText" class="feedback-text">
+            讀取中...
+          </div>
+
+          <div class="back-note">
+            這不是定義你的標籤，<br>
+            而是一段重新看見自己的回聲。
+          </div>
+
+          <div class="back-footer">
+            Please Tag Me
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="hint">點擊卡片翻面</div>
+
+  <button onclick="restart()">重新開始</button>
+
+  <script>
+    const selected =
+      JSON.parse(localStorage.getItem("selectedTags") || "[]");
+
+    const cardTags = document.getElementById("cardTags");
+    const backTags = document.getElementById("backTags");
+    const feedbackText = document.getElementById("feedbackText");
+    const dateText = document.getElementById("dateText");
+
+    const tagText =
+      selected.length > 0
+        ? selected.map(tag => `#${tag}`).join(" ")
+        : "#未選擇標籤";
+
+    cardTags.innerText = tagText;
+    backTags.innerText = tagText;
+
+    setDate();
+    loadFeedback();
+    generateFrontStyle();
+
+    function setDate() {
+      const now = new Date();
+
+      const year = now.getFullYear();
+      const month =
+        String(now.getMonth() + 1).padStart(2, "0");
+      const day =
+        String(now.getDate()).padStart(2, "0");
+
+      dateText.innerText =
+        `${year}.${month}.${day}`;
+    }
+
+    async function loadFeedback() {
+      try {
+        const response = await fetch("json/feedback.json");
+
+        if (!response.ok) {
+          throw new Error("feedback.json 讀取失敗");
+        }
+
+        const feedbackData = await response.json();
+
+        const matched = feedbackData.find(item => {
+          if (item.tags.length !== selected.length) {
+            return false;
+          }
+
+          return item.tags.every(tag =>
+            selected.includes(tag)
+          );
+        });
+
+        const finalText = matched
+          ? matched.text.replaceAll("，", "\n")
+          : "你不是任何單一標籤\n你擁有比標籤更多的樣子";
+
+        feedbackText.innerText = finalText;
+
+        localStorage.setItem("finalFeedback", finalText);
+
+      } catch (error) {
+        console.error(error);
+
+        feedbackText.innerText =
+          "沒有找到回饋文字\n請確認 feedback.json 路徑是否正確。";
+      }
+    }
+
+    function flipCard() {
+      document
+        .getElementById("resultCard")
+        .classList
+        .toggle("flipped");
+    }
+
+    function restart() {
+      localStorage.removeItem("selectedTags");
+      localStorage.removeItem("finalFeedback");
+
+      window.location.href = "nfc.html";
+    }
+
+    function generateFrontStyle() {
+      const front =
+        document.getElementById("tagCardFront");
+
+      const palette = [
+        "#EEEFEB",
+        "#C9B297",
+        "#E9ACBB",
+        "#8FBC93",
+        "#FFF1B5"
+      ];
+
+      const baseColor =
+        palette[
+          Math.floor(Math.random() * palette.length)
+        ];
+
+      front.style.backgroundColor = baseColor;
+    }
+  </script>
+
+</body>
+
+</html>
