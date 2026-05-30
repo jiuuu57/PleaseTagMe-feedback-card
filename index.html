@@ -144,6 +144,11 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
+
+      pointer-events: none;
+      -webkit-user-drag: none;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     .card-tags {
@@ -372,6 +377,11 @@
       letter-spacing: 3px;
       color: rgba(143, 47, 47, .55);
     }
+
+    .card-front,
+    .card-front * {
+      -webkit-touch-callout: none;
+    }
   </style>
 </head>
 
@@ -383,7 +393,7 @@
     <div id="resultCard" class="card">
 
       <div class="card-face card-front" id="tagCardFront">
-        <img id="characterImage" src="card_front.png" alt="角色圖片">
+        <img id="characterImage" src="card_front.png" alt="角色圖片" draggable="false">
         <div id="cardTags" class="card-tags">讀取中...</div>
       </div>
 
@@ -408,7 +418,7 @@
   <div id="downloadCard">
     <div class="download-inner">
       <div class="download-title">PLEASE TAG ME</div>
-      <img id="downloadImage" src="card_front.png" alt="下載角色圖">
+      <img id="downloadImage" src="card_front.png" alt="下載角色圖" draggable="false">
       <div id="downloadFrontTags" class="download-tags">讀取中...</div>
       <div id="downloadDate" class="download-date"></div>
       <div id="downloadFeedback" class="download-feedback">讀取中...</div>
