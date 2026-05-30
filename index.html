@@ -232,24 +232,6 @@
       color: #ddd;
       font-size: 15px;
     }
-
-    button {
-      margin-top: 18px;
-      padding: 13px 40px;
-      border: none;
-      border-radius: 999px;
-      font-size: 20px;
-      font-weight: bold;
-      cursor: pointer;
-      background: #ffcc66;
-      color: #111;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
-      font-family: "Noto Serif TC", serif;
-    }
-
-    button:hover {
-      transform: translateY(-2px);
-    }
   </style>
 </head>
 
@@ -290,8 +272,6 @@
   </div>
 
   <div class="hint">點擊卡片翻面</div>
-
-  <button onclick="restart()">重新開始</button>
 
   <script>
     const SUPABASE_URL = "https://wldvtasakcqdqtscbrnv.supabase.co";
@@ -342,9 +322,10 @@
         return;
       }
 
-      const selectedTags = Array.isArray(data.selected_tags)
-        ? data.selected_tags
-        : [];
+      const selectedTags = normalizeTags(data.selected_tags);
+
+      console.log("Supabase selected_tags =", data.selected_tags);
+      console.log("整理後 selectedTags =", selectedTags);
 
       const tagText = selectedTags.length > 0
         ? selectedTags.map(tag => `#${tag}`).join(" ")
@@ -362,35 +343,84 @@
       localStorage.setItem("finalFeedback", feedback);
     }
 
+    function normalizeTags(tags) {
+      if (!Array.isArray(tags)) return [];
+
+      return tags
+        .map(item => {
+          if (typeof item === "string") return item;
+
+          if (typeof item === "object" && item !== null) {
+            return item.name || item.tag || item.label || item.text || "";
+          }
+
+          return "";
+        })
+        .map(tag => String(tag).replace("#", "").trim())
+        .filter(tag => tag !== "");
+    }
+
     async function getFeedbackByTags(selectedTags) {
       try {
-        const response = await fetch("feedback.json");
+        const feedbackList = await loadFeedbackJson();
 
-        if (!response.ok) {
-          throw new Error("feedback.json 讀取失敗");
-        }
+        console.log("feedback.json 資料 =", feedbackList);
 
-        const feedbackList = await response.json();
-
-        const matchedFeedbacks = feedbackList.filter(item => {
+        const exactMatched = feedbackList.filter(item => {
           if (!Array.isArray(item.tags)) return false;
 
-          return item.tags.some(tag => selectedTags.includes(tag));
+          const itemTags = item.tags.map(tag => String(tag).trim());
+
+          return itemTags.length === selectedTags.length &&
+            itemTags.every(tag => selectedTags.includes(tag));
         });
 
-        if (matchedFeedbacks.length === 0) {
-          return "你不是任何單一標籤\n你擁有比標籤更多的樣子";
+        if (exactMatched.length > 0) {
+          return formatFeedbackText(randomPick(exactMatched).text);
         }
 
-        const randomIndex = Math.floor(Math.random() * matchedFeedbacks.length);
-        const selectedFeedback = matchedFeedbacks[randomIndex];
+        const partialMatched = feedbackList.filter(item => {
+          if (!Array.isArray(item.tags)) return false;
 
-        return formatFeedbackText(selectedFeedback.text);
+          return item.tags.some(tag => selectedTags.includes(String(tag).trim()));
+        });
+
+        if (partialMatched.length > 0) {
+          return formatFeedbackText(randomPick(partialMatched).text);
+        }
+
+        return "你不是任何單一標籤\n你擁有比標籤更多的樣子";
 
       } catch (error) {
-        console.error(error);
+        console.error("feedback.json 讀取或比對失敗：", error);
         return "你不是任何單一標籤\n你擁有比標籤更多的樣子";
       }
+    }
+
+    async function loadFeedbackJson() {
+      const paths = [
+        "feedback.json",
+        "json/feedback.json"
+      ];
+
+      for (const path of paths) {
+        try {
+          const response = await fetch(path);
+
+          if (response.ok) {
+            console.log("成功讀取：", path);
+            return await response.json();
+          }
+        } catch (error) {
+          console.warn("讀取失敗：", path, error);
+        }
+      }
+
+      throw new Error("找不到 feedback.json，請確認檔案位置");
+    }
+
+    function randomPick(list) {
+      return list[Math.floor(Math.random() * list.length)];
     }
 
     function formatFeedbackText(text) {
@@ -416,13 +446,6 @@
         .getElementById("resultCard")
         .classList
         .toggle("flipped");
-    }
-
-    function restart() {
-      localStorage.removeItem("selectedTags");
-      localStorage.removeItem("finalFeedback");
-
-      window.location.href = "nfc.html";
     }
 
     function generateFrontStyle() {
