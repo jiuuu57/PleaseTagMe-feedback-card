@@ -56,6 +56,7 @@
       user-select: none;
       -webkit-user-select: none;
       -webkit-touch-callout: none;
+      position: relative;
     }
 
     .card {
@@ -63,11 +64,15 @@
       height: 100%;
       position: relative;
       transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
       transition: transform .9s ease;
+      transform-origin: center center;
+      will-change: transform;
     }
 
     .card.flipped {
       transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
     }
 
     .card-face {
@@ -75,11 +80,13 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
       overflow: hidden;
       border-radius: 22px;
       box-shadow: 0 20px 50px rgba(0, 0, 0, .45);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
     }
 
     .card-front {
@@ -89,7 +96,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      position: relative;
+      position: absolute;
+      transform: rotateY(0deg) translateZ(1px);
+      -webkit-transform: rotateY(0deg) translateZ(1px);
     }
 
     .card-front::before {
@@ -135,10 +144,11 @@
     }
 
     .card-back {
-      transform: rotateY(180deg);
       background: #e7d9c4;
       color: #3a1f1f;
       padding: 18px;
+      transform: rotateY(180deg) translateZ(1px);
+      -webkit-transform: rotateY(180deg) translateZ(1px);
     }
 
     .back-content {
@@ -596,7 +606,8 @@
     }
 
     function flipCard() {
-      document.getElementById("resultCard").classList.toggle("flipped");
+      const card = document.getElementById("resultCard");
+      card.classList.toggle("flipped");
     }
 
     function generateFrontStyle() {
