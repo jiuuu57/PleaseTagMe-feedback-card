@@ -410,13 +410,32 @@
       cardTags.innerText = tagText;
       backTags.innerText = tagText;
 
-      characterImage.src = "card_front.png";
+      characterImage.src = getCoverImageByFirstTag(selectedTags);
 
       const feedback = await getFeedbackByTags(selectedTags);
       feedbackText.innerText = feedback;
 
       localStorage.setItem("selectedTags", JSON.stringify(selectedTags));
       localStorage.setItem("finalFeedback", feedback);
+    }
+
+    function getCoverImageByFirstTag(selectedTags) {
+      const firstTag = selectedTags[0];
+
+      const coverMap = {
+        "胖": "ip/fat.png",
+        "焦慮": "ip/anxious.png",
+        "矮": "ip/short.png",
+        "黑": "ip/black.png",
+        "孤僻": "ip/lonely.png",
+        "敏感": "ip/sensitive.png",
+        "沒主見": "ip/indecisive.png",
+        "固執": "ip/stubborn.png",
+        "拖延": "ip/procrastination.png",
+        "強迫症": "ip/ocd.png"
+      };
+
+      return coverMap[firstTag] || "card_front.png";
     }
 
     function normalizeTags(tags) {
