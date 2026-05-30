@@ -326,13 +326,13 @@
       const id = params.get("id");
 
       if (!id) {
-        showFallback("網址沒有帶 id\n請使用 card.html?id=資料id");
+        showFallback("網址沒有帶 id\n請使用 ?id=資料id");
         return;
       }
 
       const { data, error } = await supabaseClient
         .from("saved_characters")
-        .select("selected_tags, ai_feedback, character_png_url")
+        .select("selected_tags")
         .eq("id", id)
         .single();
 
@@ -353,24 +353,62 @@
       cardTags.innerText = tagText;
       backTags.innerText = tagText;
 
-      if (data.ai_feedback) {
-        feedbackText.innerText = data.ai_feedback.replaceAll("，", "\n");
-      } else {
-        feedbackText.innerText = "你不是任何單一標籤\n你擁有比標籤更多的樣子";
-      }
+      characterImage.src = "card_front.png";
 
-      if (data.character_png_url) {
-        characterImage.src = data.character_png_url;
-      }
+      const feedback = await getFeedbackByTags(selectedTags);
+      feedbackText.innerText = feedback;
 
       localStorage.setItem("selectedTags", JSON.stringify(selectedTags));
-      localStorage.setItem("finalFeedback", feedbackText.innerText);
+      localStorage.setItem("finalFeedback", feedback);
+    }
+
+    async function getFeedbackByTags(selectedTags) {
+      try {
+        const response = await fetch("feedback.json");
+
+        if (!response.ok) {
+          throw new Error("feedback.json 讀取失敗");
+        }
+
+        const feedbackList = await response.json();
+
+        const matchedFeedbacks = feedbackList.filter(item => {
+          if (!Array.isArray(item.tags)) return false;
+
+          return item.tags.some(tag => selectedTags.includes(tag));
+        });
+
+        if (matchedFeedbacks.length === 0) {
+          return "你不是任何單一標籤\n你擁有比標籤更多的樣子";
+        }
+
+        const randomIndex = Math.floor(Math.random() * matchedFeedbacks.length);
+        const selectedFeedback = matchedFeedbacks[randomIndex];
+
+        return formatFeedbackText(selectedFeedback.text);
+
+      } catch (error) {
+        console.error(error);
+        return "你不是任何單一標籤\n你擁有比標籤更多的樣子";
+      }
+    }
+
+    function formatFeedbackText(text) {
+      if (!text) {
+        return "你不是任何單一標籤\n你擁有比標籤更多的樣子";
+      }
+
+      return String(text)
+        .replaceAll("，", "\n")
+        .replaceAll("。", "\n")
+        .trim();
     }
 
     function showFallback(message) {
       cardTags.innerText = "#未選擇標籤";
       backTags.innerText = "#未選擇標籤";
       feedbackText.innerText = message;
+      characterImage.src = "card_front.png";
     }
 
     function flipCard() {
