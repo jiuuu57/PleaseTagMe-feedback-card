@@ -638,8 +638,19 @@
         "#FFF1B5"
       ];
 
-      const baseColor = palette[Math.floor(Math.random() * palette.length)];
-      tagCardFront.style.backgroundColor = baseColor;
+      currentCardColor = palette[Math.floor(Math.random() * palette.length)];
+
+      tagCardFront.style.background = `
+    linear-gradient(180deg, rgba(255, 255, 255, .22), transparent 45%),
+    ${currentCardColor}
+  `;
+
+      document.querySelector(".card-back").style.background = currentCardColor;
+
+      document.querySelector(".download-inner").style.background = `
+    linear-gradient(180deg, rgba(255, 255, 255, .25), transparent 40%),
+    ${currentCardColor}
+  `;
     }
 
     function setupCardInteraction() {
