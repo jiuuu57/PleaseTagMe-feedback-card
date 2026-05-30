@@ -13,6 +13,7 @@
     rel="stylesheet">
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
   <style>
     * {
@@ -21,29 +22,18 @@
 
     body {
       margin: 0;
-
       width: 100vw;
       min-height: 100dvh;
-
       overflow: hidden;
-
       display: flex;
       flex-direction: column;
-
       justify-content: center;
       align-items: center;
-
       padding-top: 30px;
       padding-bottom: 30px;
-
       background:
-        radial-gradient(circle at center,
-          rgba(120, 60, 45, 0.28),
-          transparent 38%),
-        linear-gradient(180deg,
-          #1a1111 0%,
-          #070707 100%);
-
+        radial-gradient(circle at center, rgba(120, 60, 45, 0.28), transparent 38%),
+        linear-gradient(180deg, #1a1111 0%, #070707 100%);
       color: #f4e4c1;
       font-family: "Noto Serif TC", serif;
     }
@@ -53,20 +43,19 @@
       font-size: 28px;
       letter-spacing: 5px;
       font-weight: 900;
-      font-family: "Cormorant Garamond",
-        "Noto Serif TC",
-        serif;
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
     }
 
     .card-scene {
       width: 78vw;
       height: 60vh;
-
       max-width: 340px;
       max-height: 500px;
-
       perspective: 1200px;
       cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
     }
 
     .card {
@@ -93,36 +82,32 @@
 
     .card-front {
       background:
-        linear-gradient(180deg,
-          rgba(255, 255, 255, .22),
-          transparent 45%),
+        linear-gradient(180deg, rgba(255, 255, 255, .22), transparent 45%),
         #d8c9b2;
-
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
     }
 
     .card-front::before {
       content: "PLEASE TAG ME";
-
       position: absolute;
       top: 22px;
       left: 50%;
-
       transform: translateX(-50%);
-
       font-size: 13px;
       font-weight: bold;
       letter-spacing: 3px;
-
       color: #5a2b2b;
-
       font-family: "Cormorant Garamond", serif;
+      z-index: 2;
+      white-space: nowrap;
     }
 
     .card-front img {
-      width: 90%;
+      width: 70%;
+      max-height: 70%;
       object-fit: contain;
       position: absolute;
       left: 50%;
@@ -134,23 +119,18 @@
       position: absolute;
       bottom: 24px;
       left: 50%;
-
       transform: translateX(-50%);
-
       max-width: 84%;
-
       font-size: 15px;
       font-weight: bold;
-
       background: rgba(255, 255, 255, .92);
       color: #5a3b4a;
-
       padding: 8px 16px;
       border-radius: 999px;
-
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      z-index: 3;
     }
 
     .card-back {
@@ -163,41 +143,28 @@
     .back-content {
       width: 100%;
       height: 100%;
-
       border-radius: 18px;
-
       background:
-        linear-gradient(180deg,
-          rgba(255, 255, 255, .65),
-          rgba(255, 255, 255, .25)),
+        linear-gradient(180deg, rgba(255, 255, 255, .65), rgba(255, 255, 255, .25)),
         #f8f1e6;
-
       padding: 22px 22px 20px;
-
       display: flex;
       flex-direction: column;
-
       text-align: left;
       position: relative;
     }
 
     .back-content::after {
       content: "LABEL";
-
       position: absolute;
       right: -14px;
       top: 120px;
-
       transform: rotate(90deg);
-
       font-size: 42px;
       font-weight: 700;
       letter-spacing: 5px;
-
       color: rgba(143, 47, 47, .08);
-
       font-family: "Cormorant Garamond", serif;
-
       pointer-events: none;
     }
 
@@ -205,9 +172,7 @@
       font-size: 11px;
       letter-spacing: 2px;
       color: rgba(80, 40, 40, .45);
-
       margin-bottom: 18px;
-
       font-family: "Cormorant Garamond", serif;
     }
 
@@ -215,102 +180,105 @@
       font-size: 12px;
       letter-spacing: 4px;
       font-weight: 700;
-
       color: #8f2f2f;
-
       font-family: "Cormorant Garamond", serif;
-
       margin-bottom: 12px;
     }
 
     .back-tags {
       align-self: flex-start;
-
       max-width: 100%;
-
       padding: 8px 14px;
-
       border-radius: 999px;
-
       background: #8f2f2f;
       color: #fff;
-
       font-size: 14px;
       font-weight: 700;
       line-height: 1.5;
-
       margin-bottom: 24px;
     }
 
     .feedback-text {
       width: 100%;
-
       color: #2b1212;
-
       font-size: 20px;
       line-height: 1.8;
       font-weight: 900;
-
       letter-spacing: 1px;
-
       text-align: left;
       white-space: pre-line;
-
       position: relative;
       padding-bottom: 20px;
-
       z-index: 2;
     }
 
     .feedback-text::after {
       content: "";
-
       position: absolute;
       left: 0;
       bottom: 0;
-
       width: 100%;
       height: 1px;
-
       background: rgba(80, 40, 40, .18);
     }
 
     .back-note {
       margin-top: 14px;
-
       font-size: 11px;
       line-height: 1.7;
       letter-spacing: .5px;
-
       color: rgba(43, 18, 18, .55);
-
       font-weight: 700;
       z-index: 2;
     }
 
     .back-footer {
       margin-top: auto;
-
       align-self: flex-end;
-
       font-size: 15px;
       font-weight: 700;
-
       letter-spacing: 3px;
-
       color: rgba(143, 47, 47, .55);
-
       font-family: "Cormorant Garamond", serif;
       font-style: italic;
-
       z-index: 2;
     }
 
     .hint {
       margin-top: 14px;
-
       color: #ddd;
       font-size: 13px;
+    }
+
+    #downloadCard {
+      position: fixed;
+      left: -9999px;
+      top: 0;
+      width: 720px;
+      height: 520px;
+      display: flex;
+      gap: 24px;
+      padding: 24px;
+      background:
+        radial-gradient(circle at center, rgba(120, 60, 45, 0.28), transparent 38%),
+        linear-gradient(180deg, #1a1111 0%, #070707 100%);
+    }
+
+    .download-face {
+      width: 324px;
+      height: 472px;
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .45);
+    }
+
+    .download-face.card-back {
+      transform: none;
+    }
+
+    .download-face .back-content {
+      height: 100%;
     }
   </style>
 </head>
@@ -322,28 +290,21 @@
   <div class="card-scene" onclick="flipCard()">
     <div id="resultCard" class="card">
 
-      <div id="tagCardFront" class="card-face card-front">
+      <div class="card-face card-front" id="tagCardFront">
         <img id="characterImage" src="card_front.png" alt="角色圖片">
         <div id="cardTags" class="card-tags">讀取中...</div>
       </div>
 
-      <div id="tagCardBack" class="card-face card-back">
+      <div class="card-face card-back">
         <div class="back-content">
           <div id="dateText" class="serial-number"></div>
-
           <div class="back-small-title">YOUR TAGS</div>
-
           <div id="backTags" class="back-tags">讀取中...</div>
-
-          <div id="feedbackText" class="feedback-text">
-            讀取中...
-          </div>
-
+          <div id="feedbackText" class="feedback-text">讀取中...</div>
           <div class="back-note">
             這不是定義你的標籤，<br>
             而是一段重新看見自己的回聲。
           </div>
-
           <div class="back-footer">Please Tag Me</div>
         </div>
       </div>
@@ -351,26 +312,54 @@
     </div>
   </div>
 
-  <div class="hint">點擊卡片翻面</div>
+  <div class="hint">點擊卡片翻面｜長按下載小卡</div>
+
+  <div id="downloadCard">
+    <div class="download-face card-front" id="downloadFront">
+      <img id="downloadImage" src="card_front.png" alt="下載角色圖">
+      <div id="downloadFrontTags" class="card-tags">讀取中...</div>
+    </div>
+
+    <div class="download-face card-back">
+      <div class="back-content">
+        <div id="downloadDate" class="serial-number"></div>
+        <div class="back-small-title">YOUR TAGS</div>
+        <div id="downloadBackTags" class="back-tags">讀取中...</div>
+        <div id="downloadFeedback" class="feedback-text">讀取中...</div>
+        <div class="back-note">
+          這不是定義你的標籤，<br>
+          而是一段重新看見自己的回聲。
+        </div>
+        <div class="back-footer">Please Tag Me</div>
+      </div>
+    </div>
+  </div>
 
   <script>
     const SUPABASE_URL = "https://wldvtasakcqdqtscbrnv.supabase.co";
     const SUPABASE_ANON_KEY = "sb_publishable_mtCH5g7GbaYbzsufbrgY1Q_uj_3JIDC";
 
-    const supabaseClient = supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_ANON_KEY
-    );
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     const cardTags = document.getElementById("cardTags");
     const backTags = document.getElementById("backTags");
     const feedbackText = document.getElementById("feedbackText");
     const dateText = document.getElementById("dateText");
     const characterImage = document.getElementById("characterImage");
+    const tagCardFront = document.getElementById("tagCardFront");
+
+    const downloadCard = document.getElementById("downloadCard");
+    const downloadFront = document.getElementById("downloadFront");
+    const downloadImage = document.getElementById("downloadImage");
+    const downloadFrontTags = document.getElementById("downloadFrontTags");
+    const downloadBackTags = document.getElementById("downloadBackTags");
+    const downloadFeedback = document.getElementById("downloadFeedback");
+    const downloadDate = document.getElementById("downloadDate");
 
     setDate();
     generateFrontStyle();
     loadSavedCharacter();
+    setupLongPressDownload();
 
     function setDate() {
       const now = new Date();
@@ -379,6 +368,7 @@
       const day = String(now.getDate()).padStart(2, "0");
 
       dateText.innerText = `${year}.${month}.${day}`;
+      downloadDate.innerText = dateText.innerText;
     }
 
     async function loadSavedCharacter() {
@@ -404,20 +394,22 @@
 
       const selectedTags = normalizeTags(data.selected_tags);
 
-      console.log("Supabase selected_tags =", data.selected_tags);
-      console.log("整理後 selectedTags =", selectedTags);
-
       const tagText = selectedTags.length > 0
         ? selectedTags.map(tag => `#${tag}`).join(" ")
         : "#未選擇標籤";
 
       cardTags.innerText = tagText;
       backTags.innerText = tagText;
+      downloadFrontTags.innerText = tagText;
+      downloadBackTags.innerText = tagText;
 
-      characterImage.src = getCoverImageByFirstTag(selectedTags);
+      const coverImage = getCoverImageByFirstTag(selectedTags);
+      characterImage.src = coverImage;
+      downloadImage.src = coverImage;
 
       const feedback = await getFeedbackByTags(selectedTags);
       feedbackText.innerText = feedback;
+      downloadFeedback.innerText = feedback;
 
       localStorage.setItem("selectedTags", JSON.stringify(selectedTags));
       localStorage.setItem("finalFeedback", feedback);
@@ -463,8 +455,6 @@
       try {
         const feedbackList = await loadFeedbackJson();
 
-        console.log("feedback.json 資料 =", feedbackList);
-
         const exactMatched = feedbackList.filter(item => {
           if (!Array.isArray(item.tags)) return false;
 
@@ -507,7 +497,6 @@
           const response = await fetch(path);
 
           if (response.ok) {
-            console.log("成功讀取：", path);
             return await response.json();
           }
         } catch (error) {
@@ -537,19 +526,20 @@
       cardTags.innerText = "#未選擇標籤";
       backTags.innerText = "#未選擇標籤";
       feedbackText.innerText = message;
+
+      downloadFrontTags.innerText = "#未選擇標籤";
+      downloadBackTags.innerText = "#未選擇標籤";
+      downloadFeedback.innerText = message;
+
       characterImage.src = "card_front.png";
+      downloadImage.src = "card_front.png";
     }
 
     function flipCard() {
-      document
-        .getElementById("resultCard")
-        .classList
-        .toggle("flipped");
+      document.getElementById("resultCard").classList.toggle("flipped");
     }
 
     function generateFrontStyle() {
-      const front = document.getElementById("tagCardFront");
-
       const palette = [
         "#EEEFEB",
         "#C9B297",
@@ -558,10 +548,72 @@
         "#FFF1B5"
       ];
 
-      const baseColor =
-        palette[Math.floor(Math.random() * palette.length)];
+      const baseColor = palette[Math.floor(Math.random() * palette.length)];
 
-      front.style.backgroundColor = baseColor;
+      tagCardFront.style.backgroundColor = baseColor;
+      downloadFront.style.backgroundColor = baseColor;
+    }
+
+    function setupLongPressDownload() {
+      const target = document.querySelector(".card-scene");
+      let pressTimer = null;
+      let longPressed = false;
+
+      target.addEventListener("touchstart", startLongPress, { passive: true });
+      target.addEventListener("mousedown", startLongPress);
+
+      target.addEventListener("touchend", cancelLongPress);
+      target.addEventListener("mouseup", cancelLongPress);
+      target.addEventListener("mouseleave", cancelLongPress);
+      target.addEventListener("touchmove", cancelLongPress);
+
+      target.addEventListener("click", function (e) {
+        if (longPressed) {
+          e.stopPropagation();
+          e.preventDefault();
+          longPressed = false;
+        }
+      }, true);
+
+      function startLongPress() {
+        clearTimeout(pressTimer);
+
+        pressTimer = setTimeout(() => {
+          longPressed = true;
+          downloadCardImage();
+        }, 850);
+      }
+
+      function cancelLongPress() {
+        clearTimeout(pressTimer);
+      }
+    }
+
+    async function downloadCardImage() {
+      await waitForImage(characterImage);
+      await waitForImage(downloadImage);
+
+      const canvas = await html2canvas(downloadCard, {
+        backgroundColor: null,
+        scale: 2,
+        useCORS: true
+      });
+
+      const link = document.createElement("a");
+      link.download = "please-tag-me-card.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    }
+
+    function waitForImage(img) {
+      return new Promise(resolve => {
+        if (img.complete) {
+          resolve();
+        } else {
+          img.onload = resolve;
+          img.onerror = resolve;
+        }
+      });
     }
   </script>
 
