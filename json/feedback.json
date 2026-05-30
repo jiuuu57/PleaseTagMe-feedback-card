@@ -1,0 +1,977 @@
+[
+  {
+    "id": "single_fat_01",
+    "tags": ["胖"],
+    "type": "single",
+    "text": "你不需要變輕才值得被看見，你的存在本來就有重量"
+  },
+  {
+    "id": "single_anxiety_01",
+    "tags": ["焦慮"],
+    "type": "single",
+    "text": "你腦海裡的風暴，不是混亂，是你太在乎一切"
+  },
+  {
+    "id": "single_black_01",
+    "tags": ["黑"],
+    "type": "single",
+    "text": "你不需要更亮，你只是被錯誤的光定義過"
+  },
+  {
+    "id": "single_delay_01",
+    "tags": ["拖延"],
+    "type": "single",
+    "text": "你不是停住，你是在和自己反覆談判時間"
+  },
+  {
+    "id": "single_sensitive_01",
+    "tags": ["敏感"],
+    "type": "single",
+    "text": "你接收到的世界，比別人多了一層聲音"
+  },
+  {
+    "id": "single_short_01",
+    "tags": ["矮"],
+    "type": "single",
+    "text": "你不用長高，也能看到比別人更遠的東西"
+  },
+  {
+    "id": "single_stubborn_01",
+    "tags": ["固執"],
+    "type": "single",
+    "text": "你不是不肯退讓，你只是還沒放下相信的事"
+  },
+  {
+    "id": "single_ocd_01",
+    "tags": ["強迫症"],
+    "type": "single",
+    "text": "你重複的不是動作，是想讓世界穩一點"
+  },
+  {
+    "id": "single_lonely_01",
+    "tags": ["孤僻"],
+    "type": "single",
+    "text": "你不是遠離世界，你是在選擇自己的距離"
+  },
+  {
+    "id": "single_indecisive_01",
+    "tags": ["沒主見"],
+    "type": "single",
+    "text": "你不是沒有方向，你是在太多路裡還沒停下來"
+  },
+
+  {
+    "id": "double_fat_anxiety_01",
+    "tags": ["胖", "焦慮"],
+    "type": "double",
+    "text": "你不是不夠好，是你總覺得自己還能更少一點"
+  },
+  {
+    "id": "double_fat_sensitive_01",
+    "tags": ["胖", "敏感"],
+    "type": "double",
+    "text": "你感受到的眼光，比你的身體還先抵達你"
+  },
+  {
+    "id": "double_fat_delay_01",
+    "tags": ["胖", "拖延"],
+    "type": "double",
+    "text": "你不是慢，你是在等一個不會被評價的時刻"
+  },
+  {
+    "id": "double_fat_lonely_01",
+    "tags": ["胖", "孤僻"],
+    "type": "double",
+    "text": "你不是離群，你只是還沒找到不用解釋的位置"
+  },
+  {
+    "id": "double_fat_stubborn_01",
+    "tags": ["胖", "固執"],
+    "type": "double",
+    "text": "你不是不改變，你是不想用否定自己來換取接受"
+  },
+
+  {
+    "id": "double_anxiety_delay_01",
+    "tags": ["焦慮", "拖延"],
+    "type": "double",
+    "text": "你一直在準備開始，卻也一直在怕開始"
+  },
+  {
+    "id": "double_anxiety_ocd_01",
+    "tags": ["焦慮", "強迫症"],
+    "type": "double",
+    "text": "你想控制的不是細節，是失控本身"
+  },
+  {
+    "id": "double_anxiety_sensitive_01",
+    "tags": ["焦慮", "敏感"],
+    "type": "double",
+    "text": "你不是想太多，是世界對你來說太大聲"
+  },
+  {
+    "id": "double_anxiety_lonely_01",
+    "tags": ["焦慮", "孤僻"],
+    "type": "double",
+    "text": "你不是不信任人，是你先學會了太多失去"
+  },
+  {
+    "id": "double_anxiety_indecisive_01",
+    "tags": ["焦慮", "沒主見"],
+    "type": "double",
+    "text": "你不是不知道要什麼，是你怕選錯一次就失去全部"
+  },
+
+  {
+    "id": "double_black_sensitive_01",
+    "tags": ["黑", "敏感"],
+    "type": "double",
+    "text": "你看到的陰影，比別人多一層真實"
+  },
+  {
+    "id": "double_black_lonely_01",
+    "tags": ["黑", "孤僻"],
+    "type": "double",
+    "text": "你不是不合群，你只是活在另一種光裡"
+  },
+  {
+    "id": "double_black_delay_01",
+    "tags": ["黑", "拖延"],
+    "type": "double",
+    "text": "你不是延遲，你是在躲開會被定義的瞬間"
+  },
+  {
+    "id": "double_black_anxiety_01",
+    "tags": ["黑", "焦慮"],
+    "type": "double",
+    "text": "你不是黑暗，你是太清楚光會讓人被看見"
+  },
+  {
+    "id": "double_black_stubborn_01",
+    "tags": ["黑", "固執"],
+    "type": "double",
+    "text": "你不是拒絕，你是不想被改寫"
+  },
+
+  {
+    "id": "double_delay_sensitive_01",
+    "tags": ["拖延", "敏感"],
+    "type": "double",
+    "text": "你不是慢，你是太容易被一切影響"
+  },
+  {
+    "id": "double_delay_lonely_01",
+    "tags": ["拖延", "孤僻"],
+    "type": "double",
+    "text": "你不是晚到，你是在選擇不被打擾的開始"
+  },
+  {
+    "id": "double_delay_ocd_01",
+    "tags": ["拖延", "強迫症"],
+    "type": "double",
+    "text": "你不是拖，你是在反覆修正一個不存在的錯誤"
+  },
+  {
+    "id": "double_delay_indecisive_01",
+    "tags": ["拖延", "沒主見"],
+    "type": "double",
+    "text": "你不是沒有決定，是你在每個選項裡都看見了可能性"
+  },
+  {
+    "id": "double_delay_stubborn_01",
+    "tags": ["拖延", "固執"],
+    "type": "double",
+    "text": "你不是卡住，你是在等待一個你願意相信的理由"
+  },
+
+  {
+    "id": "double_sensitive_lonely_01",
+    "tags": ["敏感", "孤僻"],
+    "type": "double",
+    "text": "你不是孤單，你只是感受得太完整"
+  },
+  {
+    "id": "double_sensitive_ocd_01",
+    "tags": ["敏感", "強迫症"],
+    "type": "double",
+    "text": "你不是控制，你是在安撫過量的世界"
+  },
+  {
+    "id": "double_sensitive_indecisive_01",
+    "tags": ["敏感", "沒主見"],
+    "type": "double",
+    "text": "你不是搖擺，你是同時接收太多方向"
+  },
+  {
+    "id": "double_sensitive_stubborn_01",
+    "tags": ["敏感", "固執"],
+    "type": "double",
+    "text": "你不是堅持，你是在保護太容易受傷的感受"
+  },
+
+  {
+    "id": "double_short_anxiety_01",
+    "tags": ["矮", "焦慮"],
+    "type": "double",
+    "text": "你不是不夠高，你只是一直抬頭看別人的標準"
+  },
+  {
+    "id": "double_short_delay_01",
+    "tags": ["矮", "拖延"],
+    "type": "double",
+    "text": "你不是慢，你只是還在找一個安全的起點"
+  },
+  {
+    "id": "double_short_sensitive_01",
+    "tags": ["矮", "敏感"],
+    "type": "double",
+    "text": "你看到的世界，比你的位置還遠"
+  },
+  {
+    "id": "double_short_lonely_01",
+    "tags": ["矮", "孤僻"],
+    "type": "double",
+    "text": "你不是退後，你是在自己的範圍裡安靜存在"
+  },
+
+  {
+    "id": "double_stubborn_ocd_01",
+    "tags": ["固執", "強迫症"],
+    "type": "double",
+    "text": "你不是難以放手，你只是怕世界崩掉"
+  },
+  {
+    "id": "double_stubborn_anxiety_01",
+    "tags": ["固執", "焦慮"],
+    "type": "double",
+    "text": "你不是不變，你是不敢失去自己"
+  },
+  {
+    "id": "double_stubborn_lonely_01",
+    "tags": ["固執", "孤僻"],
+    "type": "double",
+    "text": "你不是封閉，你是在守住自己的界線"
+  },
+  {
+    "id": "double_stubborn_indecisive_01",
+    "tags": ["固執", "沒主見"],
+    "type": "double",
+    "text": "你不是矛盾，你是在拉扯不同的相信"
+  },
+
+  {
+    "id": "double_ocd_lonely_01",
+    "tags": ["強迫症", "孤僻"],
+    "type": "double",
+    "text": "你不是重複，你是在維持一個不被打擾的秩序"
+  },
+  {
+    "id": "double_ocd_indecisive_01",
+    "tags": ["強迫症", "沒主見"],
+    "type": "double",
+    "text": "你不是猶豫，你是在試著讓一切都正確"
+  },
+
+  {
+    "id": "double_lonely_indecisive_01",
+    "tags": ["孤僻", "沒主見"],
+    "type": "double",
+    "text": "你不是沒有方向，你是在安靜地觀察所有可能"
+  },
+  {
+    "id": "triple_001",
+    "tags": ["胖", "焦慮", "黑"],
+    "type": "triple",
+    "text": "你不是被放大，你只是一直活在更重的陰影裡"
+  },
+  {
+    "id": "triple_002",
+    "tags": ["胖", "焦慮", "拖延"],
+    "type": "triple",
+    "text": "你不是慢，是在害怕開始之後的失控"
+  },
+  {
+    "id": "triple_003",
+    "tags": ["胖", "焦慮", "敏感"],
+    "type": "triple",
+    "text": "你接收到的世界，比別人多了一層重量"
+  },
+  {
+    "id": "triple_004",
+    "tags": ["胖", "焦慮", "矮"],
+    "type": "triple",
+    "text": "你不是不夠，而是總在仰望不屬於你的標準"
+  },
+  {
+    "id": "triple_005",
+    "tags": ["胖", "焦慮", "固執"],
+    "type": "triple",
+    "text": "你不是不放手，是怕一放就什麼都不剩"
+  },
+  {
+    "id": "triple_006",
+    "tags": ["胖", "焦慮", "強迫症"],
+    "type": "triple",
+    "text": "你不是在修正錯誤，是在試著讓世界穩一點"
+  },
+  {
+    "id": "triple_007",
+    "tags": ["胖", "焦慮", "孤僻"],
+    "type": "triple",
+    "text": "你不是退後，是在用距離換取安全"
+  },
+  {
+    "id": "triple_008",
+    "tags": ["胖", "焦慮", "沒主見"],
+    "type": "triple",
+    "text": "你不是沒有選擇，是每個選擇都讓你害怕失去"
+  },
+
+  {
+    "id": "triple_009",
+    "tags": ["胖", "黑", "拖延"],
+    "type": "triple",
+    "text": "你不是卡住，是在躲開被定義的瞬間"
+  },
+  {
+    "id": "triple_010",
+    "tags": ["胖", "黑", "敏感"],
+    "type": "triple",
+    "text": "你不是不被看見，是你先學會隱身"
+  },
+
+  {
+    "id": "triple_011",
+    "tags": ["胖", "黑", "矮"],
+    "type": "triple",
+    "text": "你不是低於什麼，是一直被放在錯的高度"
+  },
+  {
+    "id": "triple_012",
+    "tags": ["胖", "黑", "固執"],
+    "type": "triple",
+    "text": "你不是拒絕，是不想被改寫"
+  },
+  {
+    "id": "triple_013",
+    "tags": ["胖", "黑", "強迫症"],
+    "type": "triple",
+    "text": "你不是重複，是在維持一個不崩的世界"
+  },
+  {
+    "id": "triple_014",
+    "tags": ["胖", "黑", "孤僻"],
+    "type": "triple",
+    "text": "你不是遠離，是選擇不進入"
+  },
+  {
+    "id": "triple_015",
+    "tags": ["胖", "黑", "沒主見"],
+    "type": "triple",
+    "text": "你不是迷失，是路太多都帶著陰影"
+  },
+
+  {
+    "id": "triple_016",
+    "tags": ["胖", "拖延", "敏感"],
+    "type": "triple",
+    "text": "你不是慢，是感受太多讓你無法開始"
+  },
+  {
+    "id": "triple_017",
+    "tags": ["胖", "拖延", "矮"],
+    "type": "triple",
+    "text": "你不是停，是還沒找到安全的位置"
+  },
+  {
+    "id": "triple_018",
+    "tags": ["胖", "拖延", "固執"],
+    "type": "triple",
+    "text": "你不是卡，是不想用錯的方式開始"
+  },
+  {
+    "id": "triple_019",
+    "tags": ["胖", "拖延", "強迫症"],
+    "type": "triple",
+    "text": "你不是拖，是一直在修正不存在的錯"
+  },
+  {
+    "id": "triple_020",
+    "tags": ["胖", "拖延", "孤僻"],
+    "type": "triple",
+    "text": "你不是晚，是不想被打擾的開始"
+  },
+  {
+    "id": "triple_021",
+    "tags": ["胖", "拖延", "沒主見"],
+    "type": "triple",
+    "text": "你不是沒有方向，是每條路都太擠"
+  },
+  {
+    "id": "triple_022",
+    "tags": ["胖", "敏感", "矮"],
+    "type": "triple",
+    "text": "你不是看得少，是感受到更多從低處流過來的世界"
+  },
+  {
+    "id": "triple_023",
+    "tags": ["胖", "敏感", "固執"],
+    "type": "triple",
+    "text": "你不是不變，是太容易被傷害所以不敢鬆手"
+  },
+  {
+    "id": "triple_024",
+    "tags": ["胖", "敏感", "強迫症"],
+    "type": "triple",
+    "text": "你不是控制，是在安撫過量的感受"
+  },
+  {
+    "id": "triple_025",
+    "tags": ["胖", "敏感", "孤僻"],
+    "type": "triple",
+    "text": "你不是孤單，是感受太滿所以只能退開"
+  },
+  {
+    "id": "triple_026",
+    "tags": ["胖", "敏感", "沒主見"],
+    "type": "triple",
+    "text": "你不是猶豫，是同時聽見太多聲音"
+  },
+
+  {
+    "id": "triple_027",
+    "tags": ["胖", "矮", "固執"],
+    "type": "triple",
+    "text": "你不是堅持，是在守住自己的位置"
+  },
+  {
+    "id": "triple_028",
+    "tags": ["胖", "矮", "強迫症"],
+    "type": "triple",
+    "text": "你不是反覆，是怕世界歪掉"
+  },
+  {
+    "id": "triple_029",
+    "tags": ["胖", "矮", "孤僻"],
+    "type": "triple",
+    "text": "你不是離開，是在自己的範圍裡存在"
+  },
+  {
+    "id": "triple_030",
+    "tags": ["胖", "矮", "沒主見"],
+    "type": "triple",
+    "text": "你不是不選，是還在看世界的角度"
+  },
+
+  {
+    "id": "triple_031",
+    "tags": ["胖", "固執", "強迫症"],
+    "type": "triple",
+    "text": "你不是難放，是怕一切崩解"
+  },
+  {
+    "id": "triple_032",
+    "tags": ["胖", "固執", "孤僻"],
+    "type": "triple",
+    "text": "你不是封閉，是守住邊界"
+  },
+  {
+    "id": "triple_033",
+    "tags": ["胖", "固執", "沒主見"],
+    "type": "triple",
+    "text": "你不是矛盾，是在不同相信裡拉扯"
+  },
+
+  {
+    "id": "triple_034",
+    "tags": ["胖", "強迫症", "孤僻"],
+    "type": "triple",
+    "text": "你不是重複，是在維持不被打擾"
+  },
+  {
+    "id": "triple_035",
+    "tags": ["胖", "強迫症", "沒主見"],
+    "type": "triple",
+    "text": "你不是修正，是想讓一切正確"
+  },
+
+  {
+    "id": "triple_036",
+    "tags": ["胖", "孤僻", "沒主見"],
+    "type": "triple",
+    "text": "你不是沒有方向，是選擇太多讓你退後"
+  },
+  {
+    "id": "triple_037",
+    "tags": ["焦慮", "黑", "拖延"],
+    "type": "triple",
+    "text": "你不是停，是在黑暗裡反覆確認安全"
+  },
+  {
+    "id": "triple_038",
+    "tags": ["焦慮", "黑", "敏感"],
+    "type": "triple",
+    "text": "你不是不安，是感受讓陰影變大"
+  },
+  {
+    "id": "triple_039",
+    "tags": ["焦慮", "黑", "矮"],
+    "type": "triple",
+    "text": "你不是低，是一直被壓在看不見的光下"
+  },
+  {
+    "id": "triple_040",
+    "tags": ["焦慮", "黑", "固執"],
+    "type": "triple",
+    "text": "你不是不放，是怕失去最後的穩定"
+  },
+  {
+    "id": "triple_041",
+    "tags": ["焦慮", "黑", "強迫症"],
+    "type": "triple",
+    "text": "你不是控制，是在對抗失控"
+  },
+  {
+    "id": "triple_042",
+    "tags": ["焦慮", "黑", "孤僻"],
+    "type": "triple",
+    "text": "你不是在退，是先學會躲開傷害"
+  },
+  {
+    "id": "triple_043",
+    "tags": ["焦慮", "黑", "沒主見"],
+    "type": "triple",
+    "text": "你不是迷路，是每條路都太暗"
+  },
+
+  {
+    "id": "triple_044",
+    "tags": ["焦慮", "拖延", "敏感"],
+    "type": "triple",
+    "text": "你不是慢，是太多感受讓你無法前進"
+  },
+  {
+    "id": "triple_045",
+    "tags": ["焦慮", "拖延", "矮"],
+    "type": "triple",
+    "text": "你不是停，是還沒站穩"
+  },
+  {
+    "id": "triple_046",
+    "tags": ["焦慮", "拖延", "固執"],
+    "type": "triple",
+    "text": "你不是拖，是不敢用錯方式開始"
+  },
+
+  {
+    "id": "triple_047",
+    "tags": ["焦慮", "拖延", "強迫症"],
+    "type": "triple",
+    "text": "你不是卡住，是一直修正未發生的錯"
+  },
+  {
+    "id": "triple_048",
+    "tags": ["焦慮", "拖延", "孤僻"],
+    "type": "triple",
+    "text": "你不是晚，是在避開被看見的瞬間"
+  },
+  {
+    "id": "triple_049",
+    "tags": ["焦慮", "拖延", "沒主見"],
+    "type": "triple",
+    "text": "你不是不選，是害怕選錯"
+  },
+
+  {
+    "id": "triple_050",
+    "tags": ["焦慮", "敏感", "矮"],
+    "type": "triple",
+    "text": "你不是弱，是感受比高度更快抵達"
+  },
+  {
+    "id": "triple_051",
+    "tags": ["焦慮", "敏感", "固執"],
+    "type": "triple",
+    "text": "你不是撐，是太在意所以不放"
+  },
+  {
+    "id": "triple_052",
+    "tags": ["焦慮", "敏感", "強迫症"],
+    "type": "triple",
+    "text": "你不是控制，是想讓世界不刺痛你"
+  },
+  {
+    "id": "triple_053",
+    "tags": ["焦慮", "敏感", "孤僻"],
+    "type": "triple",
+    "text": "你不是孤單，是感受太滿"
+  },
+  {
+    "id": "triple_054",
+    "tags": ["焦慮", "敏感", "沒主見"],
+    "type": "triple",
+    "text": "你不是搖擺，是太多聲音同時存在"
+  },
+
+  {
+    "id": "triple_055",
+    "tags": ["焦慮", "矮", "固執"],
+    "type": "triple",
+    "text": "你不是不變，是不想被推著走"
+  },
+  {
+    "id": "triple_056",
+    "tags": ["焦慮", "矮", "強迫症"],
+    "type": "triple",
+    "text": "你不是重複，是想讓世界對齊"
+  },
+  {
+    "id": "triple_057",
+    "tags": ["焦慮", "矮", "孤僻"],
+    "type": "triple",
+    "text": "你不是在退，是在自己的視角裡安全"
+  },
+  {
+    "id": "triple_058",
+    "tags": ["焦慮", "矮", "沒主見"],
+    "type": "triple",
+    "text": "你不是不確定，是看見太多可能"
+  },
+  {
+    "id": "triple_059",
+    "tags": ["焦慮", "固執", "強迫症"],
+    "type": "triple",
+    "text": "你不是執著，是怕失去控制"
+  },
+  {
+    "id": "triple_060",
+    "tags": ["焦慮", "固執", "孤僻"],
+    "type": "triple",
+    "text": "你不是封閉，是不想再受影響"
+  },
+  {
+    "id": "triple_061",
+    "tags": ["焦慮", "固執", "沒主見"],
+    "type": "triple",
+    "text": "你不是矛盾，是在拉扯選擇"
+  },
+  {
+    "id": "triple_062",
+    "tags": ["焦慮", "強迫症", "孤僻"],
+    "type": "triple",
+    "text": "你不是重複，是在維持安全"
+  },
+  {
+    "id": "triple_063",
+    "tags": ["焦慮", "強迫症", "沒主見"],
+    "type": "triple",
+    "text": "你不是修正，是想讓一切正確"
+  },
+  {
+    "id": "triple_064",
+    "tags": ["焦慮", "孤僻", "沒主見"],
+    "type": "triple",
+    "text": "你不是迷路，是還沒敢走"
+  },
+
+  {
+    "id": "triple_065",
+    "tags": ["黑", "拖延", "敏感"],
+    "type": "triple",
+    "text": "你不是慢，是太清楚世界的重量"
+  },
+  {
+    "id": "triple_066",
+    "tags": ["黑", "拖延", "矮"],
+    "type": "triple",
+    "text": "你不是停，是在陰影裡找位置"
+  },
+  {
+    "id": "triple_067",
+    "tags": ["黑", "拖延", "固執"],
+    "type": "triple",
+    "text": "你不是卡，是不想被改寫"
+  },
+  {
+    "id": "triple_068",
+    "tags": ["黑", "拖延", "強迫症"],
+    "type": "triple",
+    "text": "你不是拖，是在修正不存在的錯"
+  },
+  {
+    "id": "triple_069",
+    "tags": ["黑", "拖延", "孤僻"],
+    "type": "triple",
+    "text": "你不是晚，是選擇不被打擾"
+  },
+  {
+    "id": "triple_070",
+    "tags": ["黑", "拖延", "沒主見"],
+    "type": "triple",
+    "text": "你不是不選，是所有路都太暗"
+  },
+
+  {
+    "id": "triple_071",
+    "tags": ["黑", "敏感", "矮"],
+    "type": "triple",
+    "text": "你不是低，是看見更多陰影"
+  },
+  {
+    "id": "triple_072",
+    "tags": ["黑", "敏感", "固執"],
+    "type": "triple",
+    "text": "你不是不變，是守住自己"
+  },
+  {
+    "id": "triple_073",
+    "tags": ["黑", "敏感", "強迫症"],
+    "type": "triple",
+    "text": "你不是控制，是讓世界安靜"
+  },
+  {
+    "id": "triple_074",
+    "tags": ["黑", "敏感", "孤僻"],
+    "type": "triple",
+    "text": "你不是遠，是感受太滿"
+  },
+  {
+    "id": "triple_075",
+    "tags": ["黑", "敏感", "沒主見"],
+    "type": "triple",
+    "text": "你不是搖擺，是同時看見太多方向"
+  },
+
+  {
+    "id": "triple_076",
+    "tags": ["黑", "矮", "固執"],
+    "type": "triple",
+    "text": "你不是不夠，是站在自己的位置"
+  },
+  {
+    "id": "triple_077",
+    "tags": ["黑", "矮", "強迫症"],
+    "type": "triple",
+    "text": "你不是重複，是在維持穩定"
+  },
+  {
+    "id": "triple_078",
+    "tags": ["黑", "矮", "孤僻"],
+    "type": "triple",
+    "text": "你不是在退，是在陰影裡存在"
+  },
+  {
+    "id": "triple_079",
+    "tags": ["黑", "矮", "沒主見"],
+    "type": "triple",
+    "text": "你不是迷失，是視角不同"
+  },
+
+  {
+    "id": "triple_080",
+    "tags": ["黑", "固執", "強迫症"],
+    "type": "triple",
+    "text": "你不是執著，是怕世界崩掉"
+  },
+  {
+    "id": "triple_081",
+    "tags": ["黑", "固執", "孤僻"],
+    "type": "triple",
+    "text": "你不是封閉，是守住邊界"
+  },
+  {
+    "id": "triple_082",
+    "tags": ["黑", "固執", "沒主見"],
+    "type": "triple",
+    "text": "你不是矛盾，是在不同相信裡"
+  },
+  {
+    "id": "triple_083",
+    "tags": ["黑", "強迫症", "孤僻"],
+    "type": "triple",
+    "text": "你不是重複，是在維持秩序"
+  },
+  {
+    "id": "triple_084",
+    "tags": ["黑", "強迫症", "沒主見"],
+    "type": "triple",
+    "text": "你不是修正，是想讓一切正確"
+  },
+
+  {
+    "id": "triple_085",
+    "tags": ["黑", "孤僻", "沒主見"],
+    "type": "triple",
+    "text": "你不是沒有方向，是選擇都帶陰影"
+  },
+
+  {
+    "id": "triple_086",
+    "tags": ["拖延", "敏感", "矮"],
+    "type": "triple",
+    "text": "你不是慢，是感受讓你停住"
+  },
+  {
+    "id": "triple_087",
+    "tags": ["拖延", "敏感", "固執"],
+    "type": "triple",
+    "text": "你不是卡，是不想隨便開始"
+  },
+  {
+    "id": "triple_088",
+    "tags": ["拖延", "敏感", "強迫症"],
+    "type": "triple",
+    "text": "你不是拖，是在反覆確認安全"
+  },
+  {
+    "id": "triple_089",
+    "tags": ["拖延", "敏感", "孤僻"],
+    "type": "triple",
+    "text": "你不是晚，是不想被干擾"
+  },
+  {
+    "id": "triple_090",
+    "tags": ["拖延", "敏感", "沒主見"],
+    "type": "triple",
+    "text": "你不是不選，是太多感受"
+  },
+
+  {
+    "id": "triple_091",
+    "tags": ["拖延", "矮", "固執"],
+    "type": "triple",
+    "text": "你不是停，是守住位置"
+  },
+  {
+    "id": "triple_092",
+    "tags": ["拖延", "矮", "強迫症"],
+    "type": "triple",
+    "text": "你不是重複，是在調整不安"
+  },
+  {
+    "id": "triple_093",
+    "tags": ["拖延", "矮", "孤僻"],
+    "type": "triple",
+    "text": "你不是在退，是在自己的空間裡"
+  },
+  {
+    "id": "triple_094",
+    "tags": ["拖延", "矮", "沒主見"],
+    "type": "triple",
+    "text": "你不是不動，是還在看世界"
+  },
+
+  {
+    "id": "triple_095",
+    "tags": ["拖延", "固執", "強迫症"],
+    "type": "triple",
+    "text": "你不是卡，是怕不正確"
+  },
+  {
+    "id": "triple_096",
+    "tags": ["拖延", "固執", "孤僻"],
+    "type": "triple",
+    "text": "你不是慢，是不想被影響"
+  },
+  {
+    "id": "triple_097",
+    "tags": ["拖延", "固執", "沒主見"],
+    "type": "triple",
+    "text": "你不是不選，是還沒放手"
+  },
+
+  {
+    "id": "triple_098",
+    "tags": ["拖延", "強迫症", "孤僻"],
+    "type": "triple",
+    "text": "你不是重複，是在維持安靜"
+  },
+  {
+    "id": "triple_099",
+    "tags": ["拖延", "強迫症", "沒主見"],
+    "type": "triple",
+    "text": "你不是修正，是在等正確"
+  },
+  {
+    "id": "triple_100",
+    "tags": ["拖延", "孤僻", "沒主見"],
+    "type": "triple",
+    "text": "你不是晚，是還沒走出來"
+  },
+
+  {
+    "id": "triple_101",
+    "tags": ["敏感", "矮", "固執"],
+    "type": "triple",
+    "text": "你不是弱，是太在意所以不退"
+  },
+  {
+    "id": "triple_102",
+    "tags": ["敏感", "矮", "強迫症"],
+    "type": "triple",
+    "text": "你不是控制，是想穩住世界"
+  },
+  {
+    "id": "triple_103",
+    "tags": ["敏感", "矮", "孤僻"],
+    "type": "triple",
+    "text": "你不是遠，是感受太多"
+  },
+  {
+    "id": "triple_104",
+    "tags": ["敏感", "矮", "沒主見"],
+    "type": "triple",
+    "text": "你不是搖擺，是看得太多"
+  },
+
+  {
+    "id": "triple_105",
+    "tags": ["敏感", "固執", "強迫症"],
+    "type": "triple",
+    "text": "你不是執著，是在保護自己"
+  },
+  {
+    "id": "triple_106",
+    "tags": ["敏感", "固執", "孤僻"],
+    "type": "triple",
+    "text": "你不是封閉，是太容易受傷"
+  },
+  {
+    "id": "triple_107",
+    "tags": ["敏感", "固執", "沒主見"],
+    "type": "triple",
+    "text": "你不是矛盾，是在拉扯感受"
+  },
+
+  {
+    "id": "triple_108",
+    "tags": ["敏感", "強迫症", "孤僻"],
+    "type": "triple",
+    "text": "你不是重複，是在安靜裡修復"
+  },
+  {
+    "id": "triple_109",
+    "tags": ["敏感", "強迫症", "沒主見"],
+    "type": "triple",
+    "text": "你不是修正，是在找平衡"
+  },
+  {
+    "id": "triple_110",
+    "tags": ["敏感", "孤僻", "沒主見"],
+    "type": "triple",
+    "text": "你不是迷失，是感受太滿"
+  },
+
+  {
+    "id": "triple_111",
+    "tags": ["矮", "固執", "強迫症"],
+    "type": "triple",
+    "text": "你不是不變，是守住自己的秩序"
+  },
+  {
+    "id": "triple_112",
+    "tags": ["矮", "固執", "孤僻"],
+    "type": "triple",
+    "text": "你不是在退，是在自己的世界裡存在"
+  }
+]
