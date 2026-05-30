@@ -123,7 +123,14 @@
 
     .card-front img {
       width: 70%;
-      transform: translateY(-10px);
+      max-height: 70%;
+      object-fit: contain;
+
+      position: absolute;
+      left: 50%;
+      top: 50%;
+
+      transform: translate(-50%, -50%);
     }
 
     .card-tags {
