@@ -51,7 +51,7 @@
       height: 60vh;
       max-width: 340px;
       max-height: 500px;
-      perspective: 1200px;
+      perspective: 1000px;
       cursor: pointer;
       user-select: none;
       -webkit-user-select: none;
@@ -63,16 +63,6 @@
       width: 100%;
       height: 100%;
       position: relative;
-      transform-style: preserve-3d;
-      -webkit-transform-style: preserve-3d;
-      transition: transform .9s ease;
-      transform-origin: center center;
-      will-change: transform;
-    }
-
-    .card.flipped {
-      transform: rotateY(180deg);
-      -webkit-transform: rotateY(180deg);
     }
 
     .card-face {
@@ -87,8 +77,11 @@
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
 
-      transform-style: preserve-3d;
-      -webkit-transform-style: preserve-3d;
+      transition:
+        transform .65s cubic-bezier(.25, .8, .25, 1),
+        opacity .18s ease;
+
+      will-change: transform, opacity;
     }
 
     .card-front {
@@ -100,8 +93,9 @@
       justify-content: center;
       align-items: center;
 
-      transform: rotateY(0deg) translateZ(0.5px);
-      -webkit-transform: rotateY(0deg) translateZ(0.5px);
+      transform: rotateY(0deg);
+      -webkit-transform: rotateY(0deg);
+      opacity: 1;
     }
 
     .card-back {
@@ -110,15 +104,22 @@
       color: #3a1f1f;
       padding: 18px;
 
-      transform: rotateY(180deg) translateZ(0.5px);
-      -webkit-transform: rotateY(180deg) translateZ(0.5px);
+      transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+      opacity: 0;
     }
 
-    .card-front::before,
-    .card-front img,
-    .card-tags {
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
+    .card.flipped .card-front {
+      transform: rotateY(-180deg);
+      -webkit-transform: rotateY(-180deg);
+      opacity: 0;
+    }
+
+    .card.flipped .card-back {
+      transform: rotateY(0deg);
+      -webkit-transform: rotateY(0deg);
+      opacity: 1;
+      z-index: 3;
     }
 
     .card-front::before {
